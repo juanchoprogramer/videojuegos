@@ -3,6 +3,7 @@
 
 int main()
 {
+	/*
 	sf::RenderWindow window(sf::VideoMode(600, 600), "La riata!");
 	sf::CircleShape shape(50.f);
 	shape.setFillColor(sf::Color(150,0,150));
@@ -82,6 +83,43 @@ int main()
 		window.draw(PELOTITA);
 		window.display();
 	}
-
+	*/
+	sf::Window window(sf::VideoMode(300, 300), "First practice");
+	sf::String buffer;
+	while (window.isOpen())
+	{
+		sf::Event event;
+		while (window.pollEvent(event)) {
+			if (event.type == sf::Event::Closed) {
+				window.close();
+			}
+			if (event.type==sf::Event::GainedFocus) {
+				std::cout<<"atencion"<<std::endl;
+			}
+			if (event.type == sf::Event::LostFocus) {
+				std::cout << "pausa" << std::endl;
+			}
+			if (event.type == sf::Event::MouseButtonPressed) {
+				std::cout << "click" << std::endl;
+			}
+			if (event.type == sf::Event::MouseButtonReleased) {
+				std::cout << "click liberado" << std::endl;
+			}
+			switch (event.type)
+			{
+				case sf::Event::EventType::TextEntered:
+					buffer += event.text.unicode;
+					break;
+				case sf::Event::EventType::KeyReleased:
+					if (event.key.code == sf::Keyboard::Key::Enter) {
+						window.setTitle(buffer);
+						buffer.clear();
+					}
+					break;
+				default:
+					break;
+			}
+		}
+	}
 	return 0;
 }
