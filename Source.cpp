@@ -1,6 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
-
+#include "juego.h"
 int main()
 {
 	/*
@@ -84,8 +84,14 @@ int main()
 		window.display();
 	}
 	*/
-	sf::Window window(sf::VideoMode(300, 300), "First practice");
+	/*sf::RenderWindow window(sf::VideoMode(300, 300), "First practice");
 	sf::String buffer;
+	sf::RectangleShape figura(sf::Vector2f(60.f, 10.f));
+	figura.setFillColor(sf::Color::Blue);
+	figura.setPosition(2, 4);
+	figura.setOutlineColor(sf::Color::Yellow);
+	figura.setOutlineThickness(4);
+	figura.setRotation(10);
 	while (window.isOpen())
 	{
 		sf::Event event;
@@ -120,6 +126,14 @@ int main()
 					break;
 			}
 		}
-	}
+		window.draw(figura);
+
+		window.display();
+
+	}*/
+	
+
+	juego * tamagochi;
+	tamagochi = new juego(800, 600);
 	return 0;
 }
